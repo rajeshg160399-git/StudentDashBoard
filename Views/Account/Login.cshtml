@@ -1,15 +1,50 @@
 @model LoginViewModel
-@{ ViewData["Title"] = "Sign in"; }
-<div class="row justify-content-center pt-5"><div class="col-md-7 col-lg-5">
-    <div class="card shadow border-0"><div class="card-body p-4 p-md-5">
-        <h1 class="h3 text-center mb-1">Welcome back</h1><p class="text-muted text-center mb-4">Sign in to access the student dashboard.</p>
-        <form asp-action="Login" method="post" novalidate><input asp-for="ReturnUrl" type="hidden" />
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-            <div class="mb-3"><label asp-for="Username" class="form-label"></label><input asp-for="Username" class="form-control" autofocus /><span asp-validation-for="Username" class="text-danger"></span></div>
-            <div class="mb-3"><label asp-for="Password" class="form-label"></label><input asp-for="Password" class="form-control" /><span asp-validation-for="Password" class="text-danger"></span></div>
-            <div class="form-check mb-4"><input asp-for="RememberMe" class="form-check-input" /><label asp-for="RememberMe" class="form-check-label"></label></div>
-            <button type="submit" class="btn btn-primary w-100">Sign in</button>
-        </form>
-        <p class="small text-muted text-center mt-4 mb-0">Demo: <strong>admin</strong> / <strong>Admin@@123</strong></p>
-    </div></div>
-</div></div>
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<div class="row justify-content-center pt-5">
+    <div class="col-md-7 col-lg-5">
+        <div class="card shadow border-0">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <h1 class="h3 fw-bold mb-1">Welcome back</h1>
+                    <p class="text-muted">Sign in to access the student dashboard.</p>
+                </div>
+
+                <form asp-action="Login" method="post" novalidate>
+                    <input asp-for="ReturnUrl" type="hidden" />
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label fw-semibold"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Username or email address" autofocus autocomplete="username" />
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label fw-semibold"></label>
+                        <input asp-for="Password" class="form-control" placeholder="••••••••" autocomplete="current-password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label text-muted"></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Sign in</button>
+                </form>
+
+                <div class="text-center mt-4 pt-2 border-top">
+                    <span class="text-muted">Don't have an account?</span>
+                    <a asp-action="Register" class="text-decoration-none fw-semibold ms-1">Register here</a>
+                </div>
+
+                <div class="bg-light rounded p-2 text-center mt-3">
+                    <p class="small text-muted mb-0">Default Admin: <strong>admin</strong> / <strong>Admin@@123</strong> (Database-verified)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
