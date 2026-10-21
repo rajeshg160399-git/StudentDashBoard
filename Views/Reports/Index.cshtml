@@ -1,0 +1,4 @@
+@model IEnumerable<Student>
+@{ ViewData["Title"] = "Reports"; var byCourse = Model.GroupBy(s => s.Course).OrderBy(g => g.Key); }
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h2 mb-1">Reports</h1><p class="text-muted mb-0">Student enrollment summary by course.</p></div><span class="badge text-bg-primary fs-6">@Model.Count() students</span></div>
+<div class="card border-0 shadow-sm"><div class="card-body p-4"><table class="table mb-0"><thead><tr><th>Course</th><th class="text-end">Enrolled students</th></tr></thead><tbody>@foreach (var group in byCourse) { <tr><td>@group.Key</td><td class="text-end">@group.Count()</td></tr> }</tbody></table></div></div>

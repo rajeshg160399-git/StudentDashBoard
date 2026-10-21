@@ -1,0 +1,5 @@
+html { font-size: 16px; }
+body { min-height: 100vh; }
+.dashboard-card { border-left: 4px solid #0d6efd !important; }
+.field-validation-error { display: block; font-size: .875em; margin-top: .25rem; }
+dt { color: #6c757d; }

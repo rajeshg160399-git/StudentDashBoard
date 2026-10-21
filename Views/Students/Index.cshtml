@@ -1,0 +1,7 @@
+@model IEnumerable<Student>
+@{ ViewData["Title"] = "Students"; }
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h2 mb-1">Students</h1><p class="text-muted mb-0">Maintain student records.</p></div><a asp-action="Create" class="btn btn-primary">Add student</a></div>
+<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead class="table-light"><tr><th>Student</th><th>Enrollment no.</th><th>Course</th><th>Email</th><th class="text-end">Actions</th></tr></thead><tbody>
+@foreach (var student in Model) { <tr><td class="fw-medium">@student.FullName</td><td>@student.EnrollmentNumber</td><td>@student.Course</td><td>@student.Email</td><td class="text-end text-nowrap"><a asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-outline-secondary">View</a> <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-outline-primary">Edit</a> <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-outline-danger">Delete</a></td></tr> }
+@if (!Model.Any()) { <tr><td colspan="5" class="text-center text-muted py-4">No students found. Add your first student.</td></tr> }
+</tbody></table></div></div>
