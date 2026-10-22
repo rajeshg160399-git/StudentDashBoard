@@ -19,3 +19,28 @@ public class Student
     public string Course { get; set; } = string.Empty;
     public string FullName => $"{FirstName} {LastName}";
 }
+public readonly record struct PageRequest(int Page, int Size)
+{
+    public int Skip => (Page - 1) * Size;
+    public PageRequest Next() => this with { Page = Page + 1 }; // returns a NEW copy
+}
+
+
+//Encapsulation example
+public class BankAccount
+{
+    private int _balance;
+    public int balance => _balance;
+    public void Deposit(int amount)
+    {
+        if (amount < 0)
+        {
+            throw new ArgumentException("Deposit amount cannot be negative.");
+        }
+        else
+        {
+            _balance += amount;
+        }
+
+    }
+}
