@@ -59,6 +59,8 @@ namespace StudentDashboard.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+                    b.Property<bool>("IsActive")
+                    .HasDefaultValue(true);
 
                     b.HasKey("Id");
 
@@ -107,6 +109,8 @@ namespace StudentDashboard.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+                    b.Property<bool>("IsActive")
+                   .HasDefaultValue(true);
 
                     b.HasKey("Id");
 

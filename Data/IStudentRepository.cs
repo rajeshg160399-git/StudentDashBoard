@@ -10,4 +10,6 @@ public interface IStudentRepository
     Task UpdateAsync(Student student);
     Task DeleteAsync(Student student);
     Task<int> CountAsync();
+
+    Task<Student?> GetByStudentIdAsync(int id);
 }

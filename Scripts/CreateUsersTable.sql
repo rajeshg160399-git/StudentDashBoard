@@ -15,6 +15,7 @@ BEGIN
         [Role]         NVARCHAR (50)  NOT NULL CONSTRAINT [DF_Users_Role] DEFAULT ('User'),
         [CreatedAt]    DATETIME2 (7)  NOT NULL CONSTRAINT [DF_Users_CreatedAt] DEFAULT (SYSUTCDATETIME()),
         [LastLoginAt]  DATETIME2 (7)  NULL,
+        [IsActive] bit NOT NULL DEFAULT (CAST(1 AS bit)),
         CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([Id] ASC)
     );
 

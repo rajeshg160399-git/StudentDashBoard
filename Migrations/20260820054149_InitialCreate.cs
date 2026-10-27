@@ -22,7 +22,8 @@ namespace StudentDashboard.Migrations
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EnrollmentNumber = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Course = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Course = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                 },
                 constraints: table =>
                 {

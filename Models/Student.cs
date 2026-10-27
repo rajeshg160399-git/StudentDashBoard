@@ -1,3 +1,4 @@
+using Azure;
 using System.ComponentModel.DataAnnotations;
 
 namespace StudentDashboard.Models;
@@ -18,6 +19,7 @@ public class Student
     [Required, StringLength(100)]
     public string Course { get; set; } = string.Empty;
     public string FullName => $"{FirstName} {LastName}";
+    public bool IsActive { get; set; } = true;
 }
 public readonly record struct PageRequest(int Page, int Size)
 {
@@ -42,5 +44,44 @@ public class BankAccount
             _balance += amount;
         }
 
+    }
+}
+
+
+// inheritance
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Animal is eating.");
+    }
+}
+public class Dog: Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog is barking.");
+    }
+}
+
+//delegates
+
+public delegate int Calculation(int x, int y);
+
+
+
+
+
+public class Program
+{
+    public static void GetDelagates()
+    {
+        Calculation add = Add;
+        int res = add(2, 3);
+    }
+
+    public static  int Add(int a, int b)
+    {
+        return a + b;
     }
 }

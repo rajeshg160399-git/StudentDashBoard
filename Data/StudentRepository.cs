@@ -11,4 +11,9 @@ public class StudentRepository(ApplicationDbContext context) : IStudentRepositor
     public async Task UpdateAsync(Student student) { context.Students.Update(student); await context.SaveChangesAsync(); }
     public async Task DeleteAsync(Student student) { context.Students.Remove(student); await context.SaveChangesAsync(); }
     public Task<int> CountAsync() => context.Students.CountAsync();
+    public async Task<Student?> GetByStudentIdAsync(int id)
+    {
+        var student = await context.Students.FindAsync(id); // wants to resume on request context
+        return student;
+    }
 }
