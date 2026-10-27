@@ -1,7 +1,64 @@
 @model IEnumerable<Student>
 @{ ViewData["Title"] = "Students"; }
-<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h2 mb-1">Students</h1><p class="text-muted mb-0">Maintain student records.</p></div><a asp-action="Create" class="btn btn-primary">Add student</a></div>
-<div class="card border-0 shadow-sm"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead class="table-light"><tr><th>Student</th><th>Enrollment no.</th><th>Course</th><th>Email</th><th class="text-end">Actions</th></tr></thead><tbody>
-@foreach (var student in Model) { <tr><td class="fw-medium">@student.FullName</td><td>@student.EnrollmentNumber</td><td>@student.Course</td><td>@student.Email</td><td class="text-end text-nowrap"><a asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-outline-secondary">View</a> <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-outline-primary">Edit</a> <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-outline-danger">Delete</a></td></tr> }
-@if (!Model.Any()) { <tr><td colspan="5" class="text-center text-muted py-4">No students found. Add your first student.</td></tr> }
-</tbody></table></div></div>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h2 mb-1">Students</h1>
+        <p class="text-muted mb-0">Maintain student records.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Add student</a>
+</div>
+
+<div class="row mb-3 align-items-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="input-group">
+            <span class="input-group-text bg-white border-end-0 text-muted">🔍</span>
+            <input type="text" id="studentSearchInput" class="form-control border-start-0 ps-0" placeholder="Search by name, email, enrollment, or course..." autocomplete="off" />
+            <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn" style="display: none;">Clear</button>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-7 text-md-end mt-2 mt-md-0">
+        <span id="filteredCountBadge" class="badge bg-secondary me-2" style="display: none;"></span>
+        <span id="liveStudentCountBadge" class="badge bg-info text-dark d-none"></span>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table id="studentsTable" class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Student</th>
+                    <th>Enrollment no.</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+@foreach (var student in Model) {
+                <tr class="student-row">
+                    <td class="fw-medium">@student.FullName</td>
+                    <td>@student.EnrollmentNumber</td>
+                    <td>@student.Course</td>
+                    <td>@student.Email</td>
+                    <td class="text-end text-nowrap">
+                        <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                        <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+}
+@if (!Model.Any()) {
+                <tr><td colspan="5" class="text-center text-muted py-4">No students found. Add your first student.</td></tr>
+}
+                <tr id="noMatchingStudentsRow" style="display: none;">
+                    <td colspan="5" class="text-center text-muted py-4">No matching students found for your search.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/students.js" asp-append-version="true"></script>
+}

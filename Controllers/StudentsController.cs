@@ -43,6 +43,13 @@ public class StudentsController : Controller
         return View(all.Skip(current.Skip).Take(current.Size).ToList());
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetStudentCount()
+    {
+        var count = await _student.CountAsync();
+        return Json(new { totalStudents = count, timestamp = DateTime.UtcNow });
+    }
+
     public async Task<IActionResult> Details(int? id) => id is null ? NotFound() : await FindViewAsync(id.Value);
     public IActionResult Create() => View();
 

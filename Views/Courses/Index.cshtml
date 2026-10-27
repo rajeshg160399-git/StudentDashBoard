@@ -1,2 +1,47 @@
 @{ ViewData["Title"] = "Courses"; }
-<div class="card border-0 shadow-sm"><div class="card-body p-4"><h1 class="h2">Courses</h1><p class="text-muted mb-0">Course management is ready for future expansion. Student course assignments are shown in the Students module.</p></div></div>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h2 mb-1">Courses</h1>
+        <p class="text-muted mb-0">Browse and manage academic courses.</p>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6 col-lg-4">
+        <input type="text" id="courseSearchInput" class="form-control" placeholder="Search courses..." autocomplete="off" />
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4 course-item">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Computer Science</h5>
+                <p class="text-muted small">Core programming, data structures, and algorithms.</p>
+                <span class="badge bg-primary">Active</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 course-item">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Information Technology</h5>
+                <p class="text-muted small">Networking, web systems, and database administration.</p>
+                <span class="badge bg-success">Active</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 course-item">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Electronics Engineering</h5>
+                <p class="text-muted small">Circuits, microcontrollers, and embedded design.</p>
+                <span class="badge bg-info text-dark">Active</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/courses.js" asp-append-version="true"></script>
+}
