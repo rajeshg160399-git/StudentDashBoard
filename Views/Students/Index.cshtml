@@ -1,5 +1,7 @@
 @model IEnumerable<Student>
 @{ ViewData["Title"] = "Students"; }
+
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h1 class="h2 mb-1">Students</h1>
@@ -58,6 +60,44 @@
         </table>
     </div>
 </div>
+
+@* <div>
+    <table border="1" cellpadding="10" id="grid">
+        <thead>
+            <tr>
+                <td> ID</td>
+                <td> Name</td>
+                <td> class</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 1</td>
+                <td> Raj</td>
+                <td> 10</td>
+                <td>
+                    <button class="delete-btn" data-id="1">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td> 2</td>
+                <td> Nav</td>
+                <td> 10</td>
+                <td>
+                    <button class="delete-btn" data-id="3">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td> 3</td>
+                <td> Joe</td>
+                <td> 10</td>
+                <td>
+                    <button class="delete-btn" data-id="3">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> *@
 
 @section Scripts {
     <script src="~/js/students.js" asp-append-version="true"></script>

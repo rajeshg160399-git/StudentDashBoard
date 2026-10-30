@@ -6,6 +6,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     initStudentSearch();
     fetchStudentCount();
+    student(Customer);
+    calculation(1, 2, DisplayTotal);
 });
 
 /**
@@ -108,3 +110,62 @@ async function fetchStudentCount() {
         console.warn('Could not load student stats via API:', error);
     }
 }
+//Event Delegation
+// $("#grid").on("click", ".delete-btn", function() {
+//     const id = $(this).data("id");
+// })
+
+//object
+const Student = {
+    Name: 'Raj',
+    Id :1
+}
+
+//map
+const employee = new map()
+
+employee.set("id", 1)
+employee.set("Name", 'Raj')
+
+employee.get("id");
+
+const Student1 = {
+    Name: 'nav',
+    Id: 1
+}
+const Student2 = {
+    Name: 'Raj',
+    Id: 2
+}
+
+const marks = new map()
+
+marks.set(student1, 85);
+console.log(marks.get(student1)); // 85
+console.log(marks.get(student2)); // undefined
+
+function Customer() {
+    console.log("Hellow")
+}
+
+function student(callback) {
+    callback()
+}
+
+function DisplayTotal(total) {
+    console.log(total)
+
+}
+
+
+function calculation(a, b, callback) {
+    var res = a + b;
+    callback(res)
+
+}
+
+type Name = string|number
+
+let userName: Name;
+userName = 
+
